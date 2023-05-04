@@ -13,3 +13,12 @@ print(f"The value of x is {x}") # f-string
 print("The value of x is",x) # One way to combine - only works for print statements
 print("The value of x is ",x) # This leads to two spaces between instead of 1, as the comma will add the space for you
 print("The value of x is " + str(x)) # MUST use the str() function to convert a number to a string; this also works when not using a print statement
+
+message = "The value of x is " + str(x)
+
+# there is no such thing as ++ or -- in Python, unfortunately.  You have to use += and -= (or a similar operator) for incrementing
+# and decrementing.
+
+print(x)
+x += 1 # Can't do x++ - it has to be x += 1
+print(x)
