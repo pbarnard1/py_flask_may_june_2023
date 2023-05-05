@@ -30,7 +30,7 @@ Need at least 11 (recommended 12) out of 16 discussion topics to satisfy this re
 - Dictionaries
     - Grabbing and changing values
     - Looping through them
-- Combined data types (we'll see how far we get today) - such as lists of dictionaries
+- Combined data types (will cover in bonus video) - such as lists of dictionaries
 
 - After main lecture:
     - Look at problem from Functions Basic II practice assignment that combines many of the concepts from this week
