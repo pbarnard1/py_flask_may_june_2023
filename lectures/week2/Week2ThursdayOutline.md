@@ -35,3 +35,4 @@ Need at least 11 (recommended 12) out of 16 discussion topics to satisfy this re
 - Creating our first entity-relationship diagram (ERD) with a one-to-many relationship
     - Setting VARCHAR to default to 255 and setting ON DELETE to CASCADE for foreign keys by default
 - Saving your model as a .mwb file (IMPORTANT for future assignments and the exam)
+(We'll forward-engineer our schemas in Tuesday's lecture)
