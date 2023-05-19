@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Passing values from Flask demo</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='images/my_styles.css') }}">
+</head>
+<body>
+    <h1>Welcome, {{ user_name }}!</h1> <!-- Display the name passed along -->
+    <!-- Testing whether a value is even or odd with an if block -->
+    {% if number % 2 == 0 %}
+    <p>{{ number }} is even</p>
+    {% else %}
+    <p>{{ number }} is odd</p>
+    {% endif %} <!-- Remember to always close your if statements with an endif block-->
+    <!-- Display each teacher as part of an ordered list-->
+
+    <ol> <!-- Displaying each teacher as part of an ordered list-->
+    {% for this_teacher in list_of_teachers %}
+        <li class="teacher_colors">{{ this_teacher }}</li>
+    {% endfor %}
+    </ol>
+</body>
+</html>
