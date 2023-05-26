@@ -21,15 +21,21 @@
                 <th>Screen name</th>
                 <th>Genre</th>
                 <th>Channel name</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
+            <!-- Changed to a loop that grabs from a list of Creator objects -->
+            {% for each_creator in all_creators %}
             <tr>
-                <td>{{ session["first_name"] }} {{ session["last_name"] }}</td>
-                <td>{{ session["screen_name"] }}</td>
-                <td>{{ session["genre"] }}</td>
-                <td>{{ session["channel_name"] }}</td>
+                <td>{{ each_creator.first_name }} {{ each_creator.last_name }}</td>
+                <td>{{ each_creator.screen_name }}</td>
+                <td>{{ each_creator.genre }}</td>
+                <td>{{ each_creator.channel_name }}</td>
+                <td><a href="/creators/{{ each_creator.id }}">View</a> <a href="/creators/{{ each_creator.id }}/edit">Edit</a>
+                <form action="/creators/{{ each_creator.id }}/delete" method="POST"><input type="submit" value="Delete"></form></td>
             </tr>
+            {% endfor %}
         </tbody>
     </table>
 </body>
