@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Creator</title>
+</head>
+<body>
+    <nav>
+        <h1>Content Creators Compendium</h1>
+        <ul>
+            <li><a href="/creators">All creators</a></li>
+            <li><a href="/logout">Logout</a></li>
+        </ul>
+    </nav>
+    <h1>About creator #{{ this_creator.id }}: {{ this_creator.first_name }} {{ this_creator.last_name }}</h1>
+    <p>Screen name: {{ this_creator.screen_name }}</p>
+    <p>Genre: {{ this_creator.genre }}</p>
+    <p>Channel name: {{ this_creator.channel_name }}</p>
+    <p><a href="/creators/{{ this_creator.id }}/edit">Edit</a> <form action="/creators/{{ each_creator.id }}/delete" method="POST"><input type="submit" value="Delete"></form></p>
+</body>
+</html>

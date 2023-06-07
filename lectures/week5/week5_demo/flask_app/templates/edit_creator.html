@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit a Creator</title>
+</head>
+<body>
+    <nav>
+        <h1>Content Creators Compendium</h1>
+        <ul>
+            <li><a href="/creators">All creators</a></li>
+            <li><a href="/logout">Logout</a></li>
+        </ul>
+    </nav>
+    <h3>Edit {{ this_creator.first_name }} {{ this_creator.last_name }}</h3>
+    <!-- Make sure your action is correct! -->
+    <form action="/creators/{{ this_creator.id }}/edit_in_db" method="POST">
+        <div>
+            <label for="first_name">First name:</label>
+            <!-- Take a look at how your form is prepopulated!-->
+            <input type="text" name="first_name" id="first_name" value="{{ this_creator.first_name }}">
+        </div>
+        <div>
+            <label for="last_name">Last name:</label>
+            <input type="text" name="last_name" id="last_name" value="{{ this_creator.last_name }}">
+        </div>
+        <div>
+            <label for="genre">Genre:</label>
+            <input type="text" name="genre" id="genre" value="{{ this_creator.genre }}">
+        </div>
+        <div>
+            <label for="screen_name">Screen name:</label>
+            <input type="text" name="screen_name" id="screen_name" value="{{ this_creator.screen_name }}">
+        </div>
+        <div>
+            <label for="channel_name">Channel name:</label>
+            <textarea name="channel_name">{{ this_creator.channel_name }}</textarea>
+        </div>
+        <input type="submit" value="Edit creator">
+    </form>
+</body>
+</html>

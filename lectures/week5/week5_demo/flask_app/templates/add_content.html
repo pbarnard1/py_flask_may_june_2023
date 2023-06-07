@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add New Content</title>
+</head>
+<body>
+    <nav>
+        <p>Content Creators Compendium</p>
+        <ul>
+            <li><a href="/creators">All creators</a></li>
+            <li><a href="/contents">All contents</a></li>
+            <li><a href="/logout">Log out</a></li>
+        </ul>
+    </nav>
+    <h1>Add new content</h1>
+    <form action="/contents/add_to_db" method="POST">
+        <div>
+            <label for="title">Title:</label>
+            <textarea name="title" id="title"></textarea>
+        </div>
+        <div>
+            <label for="description">Description:</label>
+            <textarea name="description" id="description"></textarea>
+        </div>
+        <div>
+            <label for="media_type">Media type:</label>
+            <input type="text" name="media_type" id="media_type">
+        </div>
+        <div>
+            <label for="recorded_date">Recorded date:</label>
+            <input type="date" name="recorded_date" id="recorded_date">
+        </div>
+        <div>
+            <label for="">Content creator:</label>
+            <select name="creator_id">
+                {# Looping through each content creator and displaying their name while using an ID value for the foreign key #}
+                {% for this_content_creator in all_content_creators %}
+                <option value="{{ this_content_creator.id }}">{{ this_content_creator.first_name }} {{ this_content_creator.last_name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <input type="submit" value="Add content">
+    </form>
+</body>
+</html>
