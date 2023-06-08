@@ -16,10 +16,7 @@ def all_content_page():
     if "name" not in session:
         print("Not logged in - sending back")
         return redirect("/")
-    return render_template("all_contents.html")
-
-
-
+    return render_template("all_contents.html", contents = content.Content.get_all_content())
 
 
 @app.route("/contents/<int:id>")
@@ -28,7 +25,9 @@ def view_content_page(id):
     if "name" not in session:
         print("Not logged in - sending back")
         return redirect("/")
-    return render_template("view_content.html")
+    # Need dictionary as that will hold a specific ID
+    data_dictionary = {"id": id}
+    return render_template("view_content.html", this_post = content.Content.get_one_post(data_dictionary))
 
 @app.route("/contents/<int:id>/edit")
 def edit_content_page(id):

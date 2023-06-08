@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Contents</title>
+</head>
+<body>
+    <nav>
+        <p>Content Creators Compendium</p>
+        <ul>
+            <li><a href='/creators'>All creators</a></li>
+            <li><a href='/contents/new'>Add content</a></li>
+            <li><a href='/logout'>Log out</a></li>
+        </ul>
+    </nav>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Title</th>
+                <th>Media type</th>
+                <th>Release date</th>
+                <th>Content creator</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for each_post in contents %}
+            <tr>
+                <td>{{ each_post.id }}</td>
+                <td>{{ each_post.title }}</td>
+                <td>{{ each_post.media_type }}</td>
+                <td>{{ each_post.recorded_date }}</td> {# On your own, figure out how to reformat the date #}
+                <td>{{ each_post.creator.first_name }} {{ each_post.creator.last_name }}</td>
+                <td><a href="/contents/{{ each_post.id }}">View</a> <a href="/contents/{{ each_post.id }}/edit">Edit</a> 
+                    <form action="/contents/{{ each_post.id }}/delete" method="POST">
+                        <input type="submit" value="Delete">
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <p><a href="/contents/new">Add content</a></p>
+</body>
+</html>

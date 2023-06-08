@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Flask Demo</title>
+    {% include 'headers.html' %}
+</head>
+
+<body>
+    <div class="container">
+    <h1>Hello B-Baller!</h1>
+
+
+    <h2>Please enter your name:</h2>
+    <table>
+        <form action="/enter">
+            <div class="form-group">
+
+                <label for="first">First Name:</label>
+                <input class="form-control" type="text" name="first" id="firstName" value="Sadie">
+            </div>
+            <div class="form-group">
+                <label for="last">Last Name:</label>
+                <input class="form-control" type="text" name="last" id="lastName" value="Flick">
+            </div>
+
+            <button type="submit" class="btn btn-success">Submit</button>
+
+
+
+        </form>
+
+    </table>
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Flask Demo</title>
+    {% include 'headers.html' %}
+</head>
+
+<body>
+    <div class="container">
+        <ul class="nav justify-content-right">
+            <li class="nav-item">
+                <a class="nav-link active" href="/logout">Logout</a>
+            </li>
+        </ul>
+        <!-- Display the person's name who entered their name in the form -->
+        <h1>Welcome, {{session['name']}} </h1>
+
+        <h2>Here are your 5 best friends and their Basketball ranks!</h2>
+        <table>
+            <col width="200">
+            <col width="200">
+            <col width="200">
+            <tr>
+                <th>Rank</th>
+                <th>Name</th>
+                <th>Show Friend</th>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>{{first}}</td>
+                <td><a href="/show/1">Show</a></td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>{{second}}</td>
+                <td><a href="/show/2">Show</a></td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>{{third}}</td>
+                <td><a href="/show/3">Show</a></td>
+            </tr>
+
+        </table>
+
+        <h2>Change Ranks and Friends</h2>
+        <form action="changeRanks">
+            <p>First</p>
+            <input type="text" name="first" id="first_place"></br>
+            <p>Second</p>
+            <input type="text" name="second" id="second_place"></br>
+            <p>Third</p>
+            <input type="text" name="third" id="third_place"></br></br>
+
+            <input type="submit" class="btn btn-success" value="Change Leaderboard" />
+        </form>
+
+    </div>
+
+</body>
+
+</html>
