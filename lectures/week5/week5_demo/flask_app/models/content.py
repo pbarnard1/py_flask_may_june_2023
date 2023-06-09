@@ -1,5 +1,6 @@
 from flask_app.config.mysqlconnection import connectToMySQL
 from flask_app.models import creator # Import the other model files as needed
+from flask import flash
 class Content:
     db_name = "content_creator_schema" # Class attribute holding the schema name
 
@@ -92,3 +93,45 @@ class Content:
         new_content_object.creator = new_creator_object
         print(new_content_object.title) # Debugging to make sure we get the title correctly
         return new_content_object
+    
+    @classmethod
+    def edit_content(cls, data):
+        query = """
+        UPDATE contents
+        SET 
+        media_type = %(media_type)s, 
+        description = %(description)s, 
+        title = %(title)s, 
+        recorded_date = %(recorded_date)s, 
+        creator_id = %(creator_id)s
+        WHERE
+        id = %(id)s;
+        """ # Don't include the last comma before the word "WHERE"!
+        return connectToMySQL(cls.db_name).query_db(query, data)
+    
+    @classmethod
+    def delete_content(cls, data):
+        query = "DELETE FROM contents WHERE id = %(id)s;"
+        return connectToMySQL(cls.db_name).query_db(query, data)
+    
+    @staticmethod
+    def validate_content(data):
+        is_valid = True # Assume everything is good for now
+        print(data)
+        # Perform validations individually
+        if len(data["title"]) < 5:
+            is_valid = False
+            flash("Title must be 5 or more characters")
+        if len(data["description"]) < 8:
+            is_valid = False
+            flash("Description must be 8 or more characters")
+        if len(data["media_type"]) < 2:
+            is_valid = False
+            flash("Media type must be 2 or more characters")
+        if data["recorded_date"] == "": # If it's blank
+            is_valid = False
+            flash("Release date must be entered")
+        if "creator_id" not in data or data["creator_id"] == '': # If not in the request.form dictionary or if it's blank (empty string)
+            is_valid = False
+            flash("Please select content creator")
+        return is_valid

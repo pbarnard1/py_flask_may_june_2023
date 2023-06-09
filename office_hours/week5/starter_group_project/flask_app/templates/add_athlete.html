@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='add_page_styles.css') }}">
+    <title>Add an athlete</title>
+</head>
+<body>
+    <nav>
+        <a href="#">The Athletes Database</a>
+        <ul>
+            <li><a href="/athletes">All athletes</a></li>
+        </ul>
+    </nav>
+    <h1>Add an athlete</h1>
+    <!-- We're missing some import pieces here - fill in the missing parts! -->
+    <form class="form">
+        <div>
+            <label>First name:</label>
+            <input type="text">
+        </div>
+        <div>
+            <label>Last name:</label>
+            <input type="text">
+        </div>
+        <div>
+            <label>Sport:</label>
+            <input type="text">
+        </div>
+        <div>
+            <label>Birthdate:</label>
+            <input type="date">
+        </div>
+        <div>
+            <label>Description:</label>
+            <textarea rows="5"></textarea>
+        </div>
+        <p><input type="submit" value="Add athlete" class="btn"></p>
+    </form>
+</body>
+</html>

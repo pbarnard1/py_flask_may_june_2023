@@ -1,0 +1,58 @@
+* {
+    margin: 0;
+    padding: 0;
+    /* border: 1px solid red; */
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+h1 {
+    margin: 10px;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    background-color: lightcoral;
+}
+
+nav a {
+    text-decoration: none;
+    flex: 2;
+    color: firebrick;
+    margin: 10px;
+}
+
+nav > a {
+    font-size: 20pt;
+    font-weight: bold;
+}
+
+nav ul li {
+    display: inline-block;
+    margin: 10px;
+}
+
+.btn {
+    display: inline-block;
+    border: 2px solid black;
+    border-radius: 5px;
+    background-color: skyblue;
+    color: black;
+    margin: 0 10px;
+    padding: 10px;
+    font-size: 12pt;
+    text-decoration: none;
+}
+
+.form > div {
+    display: flex;
+    margin: 10px;
+}
+
+.form > div > label, .form > div > p {
+    flex: 1;
+}
+
+.form > div > input, .form > div > div, .form > div > select, .form > div > textarea {
+    flex: 3;
+}

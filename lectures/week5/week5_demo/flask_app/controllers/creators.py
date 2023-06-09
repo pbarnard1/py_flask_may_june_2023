@@ -52,6 +52,9 @@ def add_new_creator():
         return redirect("/")
     # print(request.form) # Printing off the request.form dictionary
     # NO MORE SESSION - now let's use a database!
+    # Call on the validations - if NO good, redirect back to route with form
+    if not creator.Creator.validate_creator(request.form):
+        return redirect("/creators/new")
     # Put form data (from request.form) into a new dictionary
     form_data = {
         "first_name": request.form["first_name"],
@@ -89,7 +92,7 @@ def view_creator_page(id):
     }
     print(data)
     # Grab Creator object by ID
-    this_creator = creator.Creator.get_one_creator(data)
+    this_creator = creator.Creator.get_one_creator_with_posts(data)
     return render_template("view_creator.html", this_creator = this_creator)
 
 @app.route("/creators/<int:id>/delete", methods=["POST"])
@@ -111,6 +114,9 @@ def edit_creator_in_db(id):
     if "name" not in session:
         print("Not logged in - sending back")
         return redirect("/")
+    # Call on the validations - if NO good, redirect back to route with form
+    if not creator.Creator.validate_creator(request.form):
+        return redirect(f"/creators/{id}/edit") # NOTE: Redirect to correct route - the last route you were on that has the form
     form_data = {
         "first_name": request.form["first_name"],
         "last_name": request.form["last_name"],

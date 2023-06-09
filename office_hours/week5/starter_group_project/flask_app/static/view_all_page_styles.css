@@ -1,0 +1,29 @@
+* {
+    margin: 0;
+    padding: 0;
+    /* border: 1px solid red; */
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    background-color: lightcoral;
+}
+
+nav a {
+    text-decoration: none;
+    flex: 2;
+    color: firebrick;
+    margin: 10px;
+}
+
+nav > a {
+    font-size: 20pt;
+    font-weight: bold;
+}
+
+nav ul li {
+    display: inline-block;
+    margin: 10px;
+}

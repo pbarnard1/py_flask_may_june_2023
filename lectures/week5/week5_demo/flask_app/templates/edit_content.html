@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Content</title>
+</head>
+<body>
+    <nav>
+        <p>Content Creators Compendium</p>
+        <ul>
+            <li><a href="/creators">All creators</a></li>
+            <li><a href="/contents">All contents</a></li>
+            <li><a href="/logout">Log out</a></li>
+        </ul>
+    </nav>
+    <h1>Edit {{ this_post.title }}</h1>
+    <form action="/contents/{{ this_post.id }}/edit_in_db" method="POST">
+        {% with messages = get_flashed_messages() %}     <!-- declare a variable called messages -->
+            {% if messages %}                            <!-- check if there are any messages -->
+                {% for message in messages %}            <!-- loop through the messages -->
+                    <p>{{message}}</p>                   <!-- display each message in a paragraph tag -->
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        <input type="hidden" name="id" value="{{ this_post.id }}">
+        <div>
+            <label for="title">Title:</label>
+            <textarea name="title" id="title">{{ this_post.title }}</textarea>
+        </div>
+        <div>
+            <label for="description">Description:</label>
+            <textarea name="description" id="description">{{ this_post.description }}</textarea>
+        </div>
+        <div>
+            <label for="media_type">Media type:</label>
+            <input type="text" name="media_type" id="media_type" value="{{ this_post.media_type }}">
+        </div>
+        <div>
+            <label for="recorded_date">Recorded date:</label>
+            <input type="date" name="recorded_date" id="recorded_date"  value="{{ this_post.recorded_date }}">
+        </div>
+        <div>
+            <label for="">Content creator:</label>
+            <select name="creator_id">
+                {# Looping through each content creator and displaying their name while using an ID value for the foreign key #}
+                {% for this_content_creator in all_content_creators %}
+                    {% if this_content_creator.id == this_post.creator.id %}
+                    <option value="{{ this_content_creator.id }}" selected>{{ this_content_creator.first_name }} {{ this_content_creator.last_name }}</option>
+                    {% else %}
+                    <option value="{{ this_content_creator.id }}">{{ this_content_creator.first_name }} {{ this_content_creator.last_name }}</option>
+                    {% endif %}
+                {% endfor %}
+            </select>
+        </div>
+        <input type="submit" value="Edit content">
+    </form>
+</body>
+</html>

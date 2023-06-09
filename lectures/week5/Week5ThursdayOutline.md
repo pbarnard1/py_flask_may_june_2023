@@ -1,4 +1,4 @@
-# Python PT - outline for Week 5: Wednesday, June 7, 2023
+# Python PT - outline for Week 5: Thursday, June 8, 2023
 
 ## Reminders:
 - Please remember to get an early start with assignments and discussion topics every week!
@@ -26,11 +26,7 @@ If you submit the Users CRUD Modularized assignment BEFORE submitting the Users 
 Need at least 11 (recommended 12) out of 16 discussion topics to satisfy this requirement!
 
 ## Outline for today
-- Showing all content (posts) with the content creators linked (READ all)
-- Showing one post with the content creator linked (READ one)
-## We'll cover these tomorrow:
 - Revisit showing one content creator - now linking all contents (posts) (READ one)
 - Editing one post (UPDATE)
 - Deleting one post (DELETE)
 - Adding validations to our forms
-- Overview of login/registration (if we have time)
