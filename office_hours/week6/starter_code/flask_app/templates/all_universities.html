@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>University Compendium</title>
+</head>
+<body>
+    <nav>
+        <h3>University Compendium</h3>
+        <ul>
+            <li><a href='/halls'>All Halls</a></li>
+        </ul>
+    </nav>
+    <h1>All universities</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>City</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {# Display each university here! #}
+            <tr>
+                <td>Placeholder University</td>
+                <td>Placeholder City</td>
+                <td><a href='/universities/???'>View</a> <a href='/universities/???/delete'>Delete</a></td>
+            </tr>
+        </tbody>
+    </table>
+    <h2>Add a university:</h2>
+    <!-- There are pieces missing from this form!-->
+    <form>
+        <div>
+            <label for="name">Name:</label>
+            <input type="text" id="name">
+        </div>
+        <div>
+            <label for="city">City:</label>
+            <input type="text" id="city">
+        </div>
+        <input type="submit" value="Add">
+    </form>
+</body>
+</html>
