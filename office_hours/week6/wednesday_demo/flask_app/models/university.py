@@ -1,5 +1,6 @@
 from flask_app.config.mysqlconnection import connectToMySQL
 # Import other models as needed here!
+from flask_app.models import hall
 
 class University:
     db_name = "universities_schema" # Fill this in!
@@ -11,6 +12,7 @@ class University:
         self.created_at = data["created_at"]
         self.updated_at = data["updated_at"]
         # We'll link Halls here
+        self.halls = [] # Link MANY Halls
         # For Thursday and next week, we'll also link Majors
 
     # Add other class methods here!

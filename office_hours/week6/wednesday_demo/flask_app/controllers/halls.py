@@ -6,7 +6,9 @@ from flask_app.models import hall, university
 # VISIBLE ROUTES
 @app.route("/halls")
 def halls_page():
-    return render_template("all_halls.html", all_universities = university.University.get_all_universities())
+    return render_template("all_halls.html", 
+        all_halls = hall.Hall.get_all_halls_with_universities(),
+        all_universities = university.University.get_all_universities())
 
 @app.route("/halls/<int:id>/edit")
 def edit_hall_page(id): # Don't forget to pass in path variables!!!

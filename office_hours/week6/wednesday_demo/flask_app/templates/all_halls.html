@@ -23,11 +23,13 @@
         </thead>
         <tbody>
             {# Display each hall here! #}
+            {% for each_hall in all_halls %}
             <tr>
-                <td>Placeholder Hall</td>
-                <td>Placeholder University</td>
-                <td><a href='/halls/???/edit'>Edit</a> <a href='/halls/???/delete'>Delete</a></td>
+                <td>{{ each_hall.name }}</td>
+                <td>{{ each_hall.university.name }}</td>
+                <td><a href='/halls/{{ each_hall.id }}/edit'>Edit</a> <a href='/halls/{{ each_hall.id }}/delete'>Delete</a></td>
             </tr>
+            {% endfor %}
         </tbody>
     </table>
     <h2>Add a hall:</h2>
