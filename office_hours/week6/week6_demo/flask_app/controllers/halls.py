@@ -12,7 +12,12 @@ def halls_page():
 
 @app.route("/halls/<int:id>/edit")
 def edit_hall_page(id): # Don't forget to pass in path variables!!!
-    pass
+    data = {
+        "id": id
+    }
+    return render_template("edit_hall.html",
+        hall_object = hall.Hall.get_one_hall_with_university(data),
+        all_universities = university.University.get_all_universities())
 
 # HIDDEN ROUTES
 @app.route("/halls/add", methods=["POST"]) # This is a POST request route!
@@ -22,8 +27,13 @@ def add_hall_to_db():
 
 @app.route("/halls/<int:id>/edit_in_db", methods=["POST"]) # This is a POST request route!
 def edit_hall_in_db(id): # Don't forget to pass in path variables!!!
-    pass
+    hall.Hall.edit_hall(request.form)
+    return redirect('/halls')
 
 @app.route("/halls/<int:id>/delete", methods=["POST"]) # This is a POST request route!
 def delete_hall_from_db(id): # Don't forget to pass in path variables!!!
-    pass
+    data = {
+        "id": id
+    }
+    hall.Hall.delete_hall(data)
+    return redirect("/halls")

@@ -10,7 +10,10 @@ def universities_page():
 
 @app.route("/universities/<int:id>")
 def view_university_page(id): # Don't forget to pass in path variables!!!
-    pass
+    data = {
+        "id": id,
+    }
+    return render_template("view_university.html", this_university = university.University.get_one_university_with_halls(data))
 
 # HIDDEN ROUTES
 @app.route("/universities/add", methods=["POST"]) # This is a POST request route!
@@ -20,5 +23,9 @@ def add_university_to_db():
 
 @app.route("/universities/<int:id>/delete", methods=["POST"]) # This is a POST request route!
 def delete_university_from_db(id): # Don't forget to pass in path variables!!!
-    pass
+    data = {
+        "id": id
+    }
+    university.University.delete_university(data)
+    return redirect("/")
 

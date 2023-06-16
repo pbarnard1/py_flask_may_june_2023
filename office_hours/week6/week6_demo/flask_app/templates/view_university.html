@@ -9,13 +9,18 @@
     <nav>
         <h3>University Compendium</h3>
         <ul>
-            <li><a href='/universities'>All Universities</a></li>
+            <li><a href='/'>All Universities</a></li>
             <li><a href='/halls'>All Halls</a></li>
         </ul>
     </nav>
-    <h1>Placeholder University</h1>
+    <h1>{{ this_university.name }} in {{ this_university.city }}</h1>
     <p>Halls:</p>
     {# Figure out how to list each hall linked to this university! #}
-    <!-- Thursday we'll start listing majors and adding majors not linked -->
+    <ul>
+        {% for current_hall in this_university.halls %}
+        <li>{{ current_hall.name }}</li>
+        {% endfor %}
+    </ul>
+    <!-- Tuesday we'll start listing majors and adding majors not linked -->
 </body>
 </html>

@@ -53,3 +53,45 @@ class Hall:
             # Add this Hall to the list
             hall_object_list.append(new_hall_object)
         return hall_object_list # WATCH YOUR INDENTATION!
+    
+    @classmethod
+    def get_one_hall_with_university(cls, data):
+        query = """
+        SELECT * FROM halls
+        JOIN universities
+        ON universities.id = halls.university_id
+        WHERE halls.id = %(id)s;
+        """
+        results = connectToMySQL(cls.db_name).query_db(query,data)
+        hall_dictionary = results[0] # Only one dictionary in the list called results
+        # Create the Hall object
+        hall_object = cls(hall_dictionary)
+        # Create the University object
+        university_data = {
+            "id": hall_dictionary["universities.id"],
+            "name": hall_dictionary["universities.name"],
+            "city": hall_dictionary["city"],
+            "created_at": hall_dictionary["universities.created_at"],
+            "updated_at": hall_dictionary["universities.updated_at"],
+        }
+        new_university_object = university.University(university_data)
+        # Link the University to this Hall
+        hall_object.university = new_university_object
+        return hall_object
+    
+    @classmethod
+    def edit_hall(cls, data):
+        query = """
+        UPDATE halls
+        SET
+        name = %(name)s,
+        university_id = %(university_id)s
+        WHERE
+        id = %(id)s;
+        """
+        return connectToMySQL(cls.db_name).query_db(query, data)
+    
+    @classmethod
+    def delete_hall(cls, data):
+        query = "DELETE FROM halls WHERE id = %(id)s;"
+        return connectToMySQL(cls.db_name).query_db(query, data)

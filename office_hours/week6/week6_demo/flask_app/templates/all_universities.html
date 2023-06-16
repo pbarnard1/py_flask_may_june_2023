@@ -29,7 +29,11 @@
                 <td>{{ current_university.id }}</td>
                 <td>{{ current_university.name }}</td>
                 <td>{{ current_university.city }}</td>
-                <td><a href='/universities/{{ current_university.id }}'>View</a> <a href='/universities/{{ current_university.id }}/delete'>Delete</a></td>
+                <td><a href='/universities/{{ current_university.id }}'>View</a>
+                    <form action="/universities/{{ current_university.id }}/delete" method="POST">
+                        <input type="submit" value="Delete">
+                    </form>
+                </td>
             </tr>
             {% endfor %}
         </tbody>
