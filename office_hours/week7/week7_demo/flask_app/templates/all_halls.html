@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>University Compendium</title>
+</head>
+<body>
+    <nav>
+        <h3>University Compendium</h3>
+        <ul>
+            <li><a href='/'>All Universities</a></li>
+        </ul>
+    </nav>
+    <h1>All halls</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>University</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {# Display each hall here! #}
+            {% for each_hall in all_halls %}
+            <tr>
+                <td>{{ each_hall.name }}</td>
+                <td>{{ each_hall.university.name }}</td>
+                <td><a href='/halls/{{ each_hall.id }}/edit'>Edit</a> 
+                    <form action="/halls/{{ each_hall.id }}/delete" method="POST">
+                        <input type="submit" value="Delete">
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <h2>Add a hall:</h2>
+    <!-- There are pieces missing from this form!-->
+    <form action="/halls/add" method="POST">
+        <div>
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name">
+        </div>
+        <div>
+            <label for="university">University:</label>
+            <select name="university_id" id="university">
+                {% for current_university in all_universities %}
+                <!-- Display dropdown menu of all universities here! -->
+                <option value="{{ current_university.id }}">{{ current_university.name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <input type="submit" value="Add">
+    </form>
+</body>
+</html>

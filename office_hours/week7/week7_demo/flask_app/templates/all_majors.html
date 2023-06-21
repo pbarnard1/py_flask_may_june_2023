@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>University Compendium</title>
+</head>
+<body>
+    <nav>
+        <p>University Compendium</p>
+        <ul>
+            <li><a href='/'>All universities</a></li>
+            <li><a href='/halls'>All halls</a></li>
+        </ul>
+    </nav>
+    <h1>List of majors:</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Number of universities</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for this_major in all_majors %}
+            <tr>
+                <td>{{ this_major.name }}</td>
+                <td>Placeholder</td>
+                <td>
+                    <form action="/majors/{{ this_major.id }}/delete" method="POST">
+                        <input type="submit" value="Delete">
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <h3>Add a Major:</h3>
+    <form action="/majors/add_to_db" method="POST">
+        <div>
+            <label for="name">Name:</label>
+            <input type="text" name="name" id="name">
+        </div>
+        <input type="submit" value="Add">
+    </form>
+</body>
+</html>

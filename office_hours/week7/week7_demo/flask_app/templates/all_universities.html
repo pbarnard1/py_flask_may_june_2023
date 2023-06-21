@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>University Compendium</title>
+</head>
+<body>
+    <nav>
+        <h3>University Compendium</h3>
+        <ul>
+            <li><a href='/halls'>All Halls</a></li>
+        </ul>
+    </nav>
+    <h1>All universities</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>City</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {# Display each university here! #}
+            {% for current_university in all_universities %}
+            <tr>
+                <td>{{ current_university.id }}</td>
+                <td>{{ current_university.name }}</td>
+                <td>{{ current_university.city }}</td>
+                <td><a href='/universities/{{ current_university.id }}'>View</a>
+                    <form action="/universities/{{ current_university.id }}/delete" method="POST">
+                        <input type="submit" value="Delete">
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <h2>Add a university:</h2>
+    <!-- Don't forget the action (route) and method in your form tag! -->
+    <form action="/universities/add" method="POST">
+        <div>
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name"> <!-- Don't forget name="???" here! -->
+        </div>
+        <div>
+            <label for="city">City:</label>
+            <input type="text" id="city" name="city"> <!-- Don't forget name="???" here! -->
+        </div>
+        <input type="submit" value="Add">
+    </form>
+</body>
+</html>

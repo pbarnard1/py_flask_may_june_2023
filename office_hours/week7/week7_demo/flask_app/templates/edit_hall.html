@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>University Compendium</title>
+</head>
+<body>
+    <nav>
+        <h3>University Compendium</h3>
+        <ul>
+            <li><a href='/'>All Universities</a></li>
+            <li><a href='/halls'>All Halls</a></li>
+        </ul>
+    </nav>
+    <h1>Edit {{ hall_object.name}}:</h1>
+    <!-- There are pieces missing from this form!-->
+    <form action="/halls/{{ hall_object.id }}/edit_in_db" method="POST">
+        <input type="hidden" name="id" value="{{ hall_object.id }}"> <!-- Hidden input to hold the ID of the hall -->
+        <div>
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" value="{{ hall_object.name }}">
+        </div>
+        <div>
+            <label for="university">University:</label>
+            <!-- Display dropdown menu of all universities here! -->
+            <select name="university_id" id="university">
+                {% for current_university in all_universities %}
+                    {% if hall_object.university.id == current_university.id %}
+                    <option value="{{ current_university.id }}" selected>{{ current_university.name }}</option>
+                    {% else %}
+                    <option value="{{ current_university.id }}">{{ current_university.name }}</option>
+                    {% endif %}
+                {% endfor %}
+            </select>
+        </div>
+        <input type="submit" value="Edit">
+    </form>
+</body>
+</html>
