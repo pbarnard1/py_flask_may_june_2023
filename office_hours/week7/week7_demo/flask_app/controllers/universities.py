@@ -13,7 +13,9 @@ def view_university_page(id): # Don't forget to pass in path variables!!!
     data = {
         "id": id,
     }
-    return render_template("view_university.html", this_university = university.University.get_one_university_with_halls(data))
+    return render_template("view_university.html", 
+        this_university = university.University.get_one_university_with_halls(data),
+        all_majors = major.Major.get_all_majors())
 
 # HIDDEN ROUTES
 @app.route("/universities/add", methods=["POST"]) # This is a POST request route!

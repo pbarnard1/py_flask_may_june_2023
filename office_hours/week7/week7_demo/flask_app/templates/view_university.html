@@ -21,6 +21,16 @@
         <li>{{ current_hall.name }}</li>
         {% endfor %}
     </ul>
-    <!-- Tuesday we'll start listing majors and adding majors not linked -->
+    <p>Add a major to {{ this_university.name }}:</p>
+    <form action="/majors/add_to_university" method="POST">
+        <input type="hidden" value="{{ this_university.id }}" name="university_id">
+        <!-- For now, we'll grab all the majors - and later, we'll only display the majors NOT linked to a university -->
+        <select name="major_id">
+            {% for this_major in all_majors %}
+            <option value="{{ this_major.id }}">{{ this_major.name }}</option>
+            {% endfor %}
+        </select>
+        <input type="submit" value="Add">
+    </form>
 </body>
 </html>

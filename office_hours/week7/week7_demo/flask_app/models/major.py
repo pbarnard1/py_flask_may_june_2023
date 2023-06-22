@@ -32,3 +32,13 @@ class Major:
             new_major_object = cls(current_major_dictionary)
             list_of_major_objects.append(new_major_object)
         return list_of_major_objects # Make sure this return statement is NOT in the for loop
+    
+    @classmethod
+    def add_major_to_university(cls, data):
+        query = """
+        INSERT INTO universities_majors
+        (university_id, major_id)
+        VALUES
+        (%(university_id)s, %(major_id)s);
+        """
+        return connectToMySQL(cls.db_name).query_db(query, data)

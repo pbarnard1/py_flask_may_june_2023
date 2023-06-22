@@ -17,7 +17,8 @@ def delete_major_from_db(id): # Don't forget to pass in path variables!
 
 @app.route("/majors/add_to_university", methods=["POST"])
 def add_major_to_university():
-    pass
+    major.Major.add_major_to_university(request.form)
+    return redirect(f"/universities/{request.form['university_id']}")
 
 @app.route("/majors/<int:major_id>/remove_from_university", methods=["POST"])
 def remove_major_from_university(major_id):
