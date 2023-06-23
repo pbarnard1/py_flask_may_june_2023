@@ -21,6 +21,18 @@
         <li>{{ current_hall.name }}</li>
         {% endfor %}
     </ul>
+    <p>Majors:</p>
+    <ul>
+        {% for each_major in this_university.majors %}
+        <li>{{ each_major.name }} 
+            <form action="/majors/{{ each_major.id }}/remove_from_university" method="POST">
+                <input type="hidden" value="{{ this_university.id }}" name="university_id">
+                <input type="hidden" value="{{ each_major.id }}" name="major_id">
+                <input type="submit" value="Delete">
+            </form>
+        </li>
+        {% endfor %}
+    </ul>
     <p>Add a major to {{ this_university.name }}:</p>
     <form action="/majors/add_to_university" method="POST">
         <input type="hidden" value="{{ this_university.id }}" name="university_id">

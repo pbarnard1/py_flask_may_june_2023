@@ -22,4 +22,5 @@ def add_major_to_university():
 
 @app.route("/majors/<int:major_id>/remove_from_university", methods=["POST"])
 def remove_major_from_university(major_id):
-    pass
+    major.Major.delete_major_from_university(request.form)
+    return redirect(f"/universities/{request.form['university_id']}")

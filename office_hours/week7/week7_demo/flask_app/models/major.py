@@ -42,3 +42,11 @@ class Major:
         (%(university_id)s, %(major_id)s);
         """
         return connectToMySQL(cls.db_name).query_db(query, data)
+    
+    @classmethod
+    def delete_major_from_university(cls, data):
+        query = """
+        DELETE FROM universities_majors
+        WHERE university_id = %(university_id)s AND major_id = %(major_id)s;
+        """
+        return connectToMySQL(cls.db_name).query_db(query, data)
