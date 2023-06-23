@@ -11,6 +11,7 @@
         <ul>
             <li><a href='/'>All Universities</a></li>
             <li><a href='/halls'>All Halls</a></li>
+            <li><a href='/majors'>All Majors</a></li>
         </ul>
     </nav>
     <h1>{{ this_university.name }} in {{ this_university.city }}</h1>
@@ -33,16 +34,20 @@
         </li>
         {% endfor %}
     </ul>
-    <p>Add a major to {{ this_university.name }}:</p>
-    <form action="/majors/add_to_university" method="POST">
-        <input type="hidden" value="{{ this_university.id }}" name="university_id">
-        <!-- For now, we'll grab all the majors - and later, we'll only display the majors NOT linked to a university -->
-        <select name="major_id">
-            {% for this_major in all_majors %}
-            <option value="{{ this_major.id }}">{{ this_major.name }}</option>
-            {% endfor %}
-        </select>
-        <input type="submit" value="Add">
-    </form>
+    {% if all_majors|length == 0 %}
+        <p>All possible majors linked to {{ this_university.name }}</p>
+    {% else %}
+        <p>Add a major to {{ this_university.name }}:</p>
+        <form action="/majors/add_to_university" method="POST">
+            <input type="hidden" value="{{ this_university.id }}" name="university_id">
+            <!-- For now, we'll grab all the majors - and later, we'll only display the majors NOT linked to a university -->
+            <select name="major_id">
+                {% for this_major in all_majors %}
+                <option value="{{ this_major.id }}">{{ this_major.name }}</option>
+                {% endfor %}
+            </select>
+            <input type="submit" value="Add">
+        </form>
+    {% endif %}
 </body>
 </html>

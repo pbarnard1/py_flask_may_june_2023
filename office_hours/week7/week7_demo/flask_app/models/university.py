@@ -93,31 +93,34 @@ class University:
         # Create the University object
         university_dictionary = results[0] # Grab the first item as that's guaranteed to be found, assuming that university exists
         university_object = cls(university_dictionary) # This is essentially University()
+        held_hall_objects = {} # Dictionary holding unique Halls
         # Go through each hall
         for each_hall_dictionary in results:
+            print(each_hall_dictionary)
             # To prevent us from creating a Hall object if no data found
             if each_hall_dictionary["halls.id"] == None:
                 break
-            print(each_hall_dictionary)
-            # Create each Hall object, then link it to the University object
-            hall_info = {
-                "id": each_hall_dictionary["halls.id"], # Duplicate column name, so table name added
-                "name": each_hall_dictionary["halls.name"], # Duplicate column name, so table name added
-                "created_at": each_hall_dictionary["halls.created_at"], # Duplicate column name, so table name added
-                "updated_at": each_hall_dictionary["halls.updated_at"], # Duplicate column name, so table name added
-            }
-            hall_object = hall.Hall(hall_info)
-            # Link this Hall to the list of halls for this University
-            university_object.halls.append(hall_object)
+            if str(each_hall_dictionary["halls.id"]) not in held_hall_objects:
+                # Create each Hall object, then link it to the University object
+                hall_info = {
+                    "id": each_hall_dictionary["halls.id"], # Duplicate column name, so table name added
+                    "name": each_hall_dictionary["halls.name"], # Duplicate column name, so table name added
+                    "created_at": each_hall_dictionary["halls.created_at"], # Duplicate column name, so table name added
+                    "updated_at": each_hall_dictionary["halls.updated_at"], # Duplicate column name, so table name added
+                }
+                hall_object = hall.Hall(hall_info)
+                # Link this Hall to the list of halls for this University
+                university_object.halls.append(hall_object)
+                held_hall_objects[str(each_hall_dictionary["halls.id"])] = hall_object
         # New dictionary that will hold Major objects so we don't duplicate them
-        held_university_objects = {}
+        held_major_objects = {}
         # Go through each major
         for each_major_dictionary in results:
             # If no Major linked to university, don't both looping, as there are no Majors to create
             if each_major_dictionary["majors.id"] == None:
                 break
             # Check to see if we already created the Major object
-            if str(each_major_dictionary["majors.id"]) not in held_university_objects:
+            if str(each_major_dictionary["majors.id"]) not in held_major_objects:
                 
                 major_info = {
                     "id": each_major_dictionary["majors.id"],
@@ -127,7 +130,7 @@ class University:
                 }
                 # Make the Major object
                 major_object = major.Major(major_info)
-                held_university_objects[str(each_major_dictionary["majors.id"])] = major_object
+                held_major_objects[str(each_major_dictionary["majors.id"])] = major_object
                 # Link this Major to this University
                 university_object.majors.append(major_object)
         return university_object

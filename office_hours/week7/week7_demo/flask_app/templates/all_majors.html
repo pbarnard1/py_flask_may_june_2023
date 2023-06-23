@@ -26,7 +26,7 @@
             {% for this_major in all_majors %}
             <tr>
                 <td>{{ this_major.name }}</td>
-                <td>Placeholder</td>
+                <td>{{ this_major.universities|length }}</td>
                 <td>
                     <form action="/majors/{{ this_major.id }}/delete" method="POST">
                         <input type="submit" value="Delete">
