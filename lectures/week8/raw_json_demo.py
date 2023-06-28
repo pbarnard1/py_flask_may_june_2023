@@ -1,0 +1,10 @@
+# List of dictionaries of data - Harry Potter characters ("true" and "false" capitalized as this is Python)
+HP_data = [{"id":"9e3f7ce4-b9a7-4244-b709-dae5c1f1d4a8","name":"Harry Potter","alternate_names":["The Boy Who Lived","The Chosen One"],"species":"human","gender":"male","house":"Gryffindor","dateOfBirth":"31-07-1980","yearOfBirth":1980,"wizard":True,"ancestry":"half-blood","eyeColour":"green","hairColour":"black","wand":{"wood":"holly","core":"phoenix feather","length":11},"patronus":"stag","hogwartsStudent":True,"hogwartsStaff":False,"actor":"Daniel Radcliffe","alternate_actors":[],"alive":True,"image":"https://ik.imagekit.io/hpapi/harry.jpg"},{"id":"4c7e6819-a91a-45b2-a454-f931e4a7cce3","name":"Hermione Granger","alternate_names":[],"species":"human","gender":"female","house":"Gryffindor","dateOfBirth":"19-09-1979","yearOfBirth":1979,"wizard":True,"ancestry":"muggleborn","eyeColour":"brown","hairColour":"brown","wand":{"wood":"vine","core":"dragon heartstring","length":10.75},"patronus":"otter","hogwartsStudent":True,"hogwartsStaff":False,"actor":"Emma Watson","alternate_actors":[],"alive":True,"image":"https://ik.imagekit.io/hpapi/hermione.jpeg"},{"id":"c3b1f9a5-b87b-48bf-b00d-95b093ea6390","name":"Ron Weasley","alternate_names":["Dragomir Despard"],"species":"human","gender":"male","house":"Gryffindor","dateOfBirth":"01-03-1980","yearOfBirth":1980,"wizard":True,"ancestry":"pure-blood","eyeColour":"blue","hairColour":"red","wand":{"wood":"willow","core":"unicorn tail-hair","length":14},"patronus":"Jack Russell terrier","hogwartsStudent":True,"hogwartsStaff":False,"actor":"Rupert Grint","alternate_actors":[],"alive":True,"image":"https://ik.imagekit.io/hpapi/ron.jpg"}]
+
+print(HP_data)
+
+for current_character in HP_data:
+    print(current_character)
+    # print(current_character["name"]) # Grabbing the name of the character
+    print(current_character["wand"]) # Grab dictionary for the wand of the character
+    print(current_character["wand"]["wood"]) # Grab the wood for the wand for the character
