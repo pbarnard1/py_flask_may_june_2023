@@ -8,6 +8,7 @@
 ### Added myself ###
 *.bak
 /not_for_github
+*.class
 
 ### Flask ###
 instance/*

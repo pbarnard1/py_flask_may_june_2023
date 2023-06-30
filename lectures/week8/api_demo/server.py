@@ -14,10 +14,7 @@ def search_api():
     api_response = requests.get(f"https://pokeapi.co/api/v2/pokemon/{lower_case_name}")
     print(api_response)
     # print(api_response.json()) # Show raw JSON data
-    return jsonify({
-        "message": "Contacted server",
-        "raw_data": api_response.json()
-    })
+    return jsonify(api_response.json())
 
 if __name__=="__main__":
     app.run(debug=True)
